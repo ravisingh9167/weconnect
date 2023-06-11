@@ -3,7 +3,7 @@ const bcrypt= require('bcrypt');
 
 exports.getUsers= async (conditions= {})=>{
     try{
-        const users= await userModel.aggregate(conditions, {__v: 0});
+        const users= await userModel.find(conditions, {__v: 0});
         return Promise.resolve(users);
     }
     catch(e){
