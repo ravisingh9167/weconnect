@@ -1,9 +1,13 @@
 const userService= require('./service');
 const jwt= require('jsonwebtoken');
-const config= require('./../../config/config')
+const config= require('./../../config/config');
+const { uploadS3, getSignedUrl } = require('../../../utils/helpers/aws');
 
 exports.signup= async (req, res)=>{
     try{
+    //    const isUpload= await uploadS3("Hi, This is testing upload");
+       const getFile= getSignedUrl("temp.txt")
+       return res.send(getFile);
        const body= req.body;
        const users= await userService.getUsers({mobileNumber: body.mobileNumber});
        if(users.length) return res.status(422).json({msg: "user already exist"});

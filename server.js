@@ -7,6 +7,9 @@ app.use(express.json());
 
 require('./server/config/libs/mongoose'); //initializing mongoose
 
+app.get('/', (req, res)=>{
+     return res.send('Wellcome to Weconnect');
+})
 app.use('/user', require('./server/apis/users/index'));
 app.use('/chat', require('./server/apis/chats/index'));
 
